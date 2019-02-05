@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--
+	TP final
+	Thématique : Site de supermarché
+	Auteur : Melnyk Svitlana
+	Date : Avril 2018
+-->
+<head>
+    <meta charset="utf-8">
+    <title>Site de supermarché</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        window.addEventListener("load", function (){
+            //Afficher le catalogue de produits
+            CatalogueProduit.afficher();
+
+          //Afficher la grille (vignette)
+            var sVignette = document.getElementById("vignette");
+            sVignette.addEventListener("click", function(){
+                CatalogueProduit.setModeAffichage("vignette");
+                CatalogueProduit.afficher();
+            });
+
+            //Afficher la liste
+            var sListe = document.getElementById("liste");
+            sListe.addEventListener("click", function(){
+                CatalogueProduit.setModeAffichage("liste");
+                CatalogueProduit.afficher();
+            });
+
+            //Afficher le nombre de produit par page
+            var sNombreProduitParPage = document.getElementById("nombreProduitParPage");
+            sNombreProduitParPage.addEventListener("change", function() {
+                    CatalogueProduit.setNombreParPage(sNombreProduitParPage.value);
+                });
+
+
+            })
+
+    </script>
+
+</head>
+<body>
+        <!-- Entête de la page -->
+            <nav class="navbar sticky-top navbar-inverse bg-inverse">
+                <div class="container">
+                    <ul class="nav d-flex flex-column flex-lg-row justify-content-between">
+                        <li class="p-2"><a href="#"><i class="fa fa-phone-square" aria-hidden="true">  1-800-465-2139</i></a></li>
+                        <li class="p-2"><a href="#"><i class="fa fa-commenting-o" aria-hidden="true">  Écrivez-nous maintenant</i></a></li>
+                        <li class="p-2"><a href="#"><i class="fa fa-sign-in" aria-hidden="true"> Se connecter </i></a></li>
+                        <li class="p-2"><a href="#"><i class="fa fa-list-alt" aria-hidden="true"> Ma liste</i></a></li>
+                        <li class="p-2"><a href="#"><i class="fa fa-user-o ml-auto" aria-hidden="true"> Mon compte</i></a></li>
+                        <li class="p-2"><a href="#"> EN</a></li>
+                    </ul>
+                </div>
+            </nav>
+             <nav class="navbar navbar-toggleable-lg navbar-light">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon mb-5"></span>
+                    </button>
+
+                    <!-- Logo -->
+                    <a class="navbar-brand ml-5 mr-5" href="#">Q-VERT<br><h6><i>Toujour nouveau!</i></h6></a>
+
+                    <!-- Navigation -->
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="navbar-nav text-nowrap">
+                            <li class="nav-item mr-5"><a class="nav-link" href="index.html">Épicerie en ligne</a></li>
+                            <li class="nav-item mr-5"><a class="nav-link" href="#">Recettes</a></li>
+                            <li class="nav-item mr-5"><a class="nav-link" href="#">Circulaire et coupons</a></li>
+                            <li class="nav-item mr-5"><a class="nav-link" href="#">Nouvelles</a></li>
+                            <li class="nav-item mr-5"><a class="nav-link" href="#">Nous joindre</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Panier -->
+                    <button class="btn btn-danger" id="btnPanier"><span>Panier</span> <span id="btnPanierContent">0</span></button>
+                </div>
+             </nav>
+
+        <!-- Le corps de la page -->
+
+        <!-- Section de recherche -->
+    <main id="mainPicture">
+        <form>
+            <input type="text" name="search" placeholder="Recherche..">
+        </form>
+    </main>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <a class="navbar-text" href="#"><img class="images" src="images/images.png"  alt="prix" width="70">Toutes les promos</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="navbar-text" href="#"><img class="images" src="images/images (1).png"  alt="chaine" width="70">Nos magasins</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="navbar-text" href="#"><img class="images" src="images/download.png"  alt="delivery" width="70">Livraison rapide</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produits de la semaine --->
+    <div class="text-center">
+        <hr><h3>Produits de la semaine</h3><hr>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <!-- Nombre de produit par page -->
+                    <select class="form-control mr-2" name="nombreProduitParPage" id="nombreProduitParPage">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                        <option value="41">tous</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+
+                    <!-- Grille (vignette) -->
+                    <button class="btn btn-warning mr-2" id="vignette">Vignette</button>
+                    <!-- Liste -->
+                    <button class="btn btn-warning mr-2" id="liste">Liste</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Catalogue de produits -->
+        <div class="container">
+            <div class="row" id="affichage">
+            <!-- inclure les données ici -->
+            </div>
+        </div>
+
+
+        <!-- Pagination --->
+        <nav>
+            <ul class="pagination justify-content-center" id="list"></ul>
+        </nav>
+
+    <!-- Le pied de la page-->
+    <footer>
+        <nav class="navbar navbar-inverse bg-inverse">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-md-left">
+                    <div class="nav navbar-text">
+                        <div>
+                            <h5><a href="#" title="link">En ligne</a></h5>
+                            <small><a href="#" title="link">Épicerie en ligne</a></small><br>
+                            <small><a href="#" title="link">Recettes</a></small><br>
+                            <small><a href="#" title="link">Circulaire et coupons</a></small><br>
+                            <small><a href="#" title="link">Nouvelles</a></small><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-left">
+                    <div class="nav navbar-text">
+                        <h5><a href="#" title="link">Notre offre</a></h5>
+                        <small><a href="#" title="link">Produits</a></small><br>
+                        <small><a href="#" title="link">Nos services</a></small><br>
+                        <small><a href="#" title="link">Nos cartes-cadeaux</a></small><br>
+                        <small><a href="#" title="link">Nos partenaires</a></small><br>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-left">
+                    <div class="nav navbar-text">
+                        <h5><a href="#" title="link">Découvrez-nous</a></h5>
+                        <small><a href="#" title="link">À propos de nous</a></small><br>
+                        <small><a href="#" title="link">Conditions générales</a></small><br>
+                        <small><a href="#" title="link">Politique de confidentialité</a></small><br>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-left">
+                    <div class="nav navbar-text">
+                        <h5><a href="#" title="link">Emplois</a></h5>
+                        <small><a href="#" title="link">Emplois en magasin</a></small><br>
+                        <small><a href="#" title="link">Faire carrière au siège social</a></small><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <p>&copy;2018 Melnyk - Tous droits réservés</p>
+        </nav>
+    </footer>
+	
+	<script src="data/produit.js"></script>
+    <script src="js/CatalogueProduit.js"></script>
+</body>
+</html>

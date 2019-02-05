@@ -1,0 +1,173 @@
+/*TP final
+Thématique : Site de supermarché
+Auteur : Melnyk Svitlana
+Date : Avril 2018
+*/
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Raleway+Dots');
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+h4, h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: black;
+}
+h6 {
+    margin-bottom: 0;
+}
+p{
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+hr{
+    width: 1110px;
+}
+
+/* Entête de la page */
+a{
+    color: white;
+}
+a:hover{
+    color: #94921E;
+    text-decoration: none;
+}
+
+/* Logo */
+.navbar-light .navbar-brand{
+    color: #94921E;
+    font-weight: 900;
+    font-size: 25px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Navigation */
+.navbar-light .navbar-nav .nav-link{
+    color: black;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #94921E;
+}
+
+/* Le corps de la page */
+
+    /* Section de recherche */
+#mainPicture{
+    background: url('../images/shopping-cart-2369143_1920.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 350px;
+    opacity: 0.8;
+}
+main input[type=text] {
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/magnifying-glass-1294834_1920.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+
+    /*  Animation  */
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+main input[type=text]:focus {
+    width: 100%;
+}
+.navbar-text {
+    color: black;
+}
+.images{
+    margin-right: 10px;
+}
+
+    /* Section de produits */
+.produit{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.nom {
+    font-weight: bold;
+}
+.image{
+    order: -1;
+}
+.prix{
+    font-weight: bold;
+}
+
+    /* Affichage de la vignette */
+.card-deck{
+    justify-content: space-between;
+}
+.card-deck .produit {
+    width: 250px;
+}
+.card-deck .nom{
+    margin-top: 20px;
+}
+
+/* Affichage de la liste */
+.liste{
+    display: flex;
+    flex-direction: column;
+}
+.liste .produit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+}
+.liste .image{
+    width: 8%;
+}
+
+/* Le pied de la page */
+footer .row{
+    padding: 10px 0 50px 0;
+}
+footer p{
+    color: white;
+    text-align: center;
+}
+
+/*   styles mobile  */
+@media (max-width: 48em) {
+    hr{
+        width: auto;
+    }
+    footer {
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
